@@ -230,7 +230,7 @@ function sieve(n) {
     return p.map((v, i) => v ? i : null).filter(Boolean)
 }
 
-function bfs_v1(g, s) {
+function bfs_only_one(g, s) {
     const q = [s], v = new Array(g.length).fill(0), o = [];
     v[s] = 1;
     while (q.length) {
@@ -243,18 +243,3 @@ function bfs_v1(g, s) {
     }
     return o
 }
-
-function bfs_v2(g, s) {
-    const q = [s], v = new Array(g.length).fill(0), o = [];
-    v[s] = 1;
-    while (q.length) {
-        const u = q.shift();
-        o.push(u);
-        for (const e of g[u]) if (!v[e.v]) {
-            v[e.v] = 1;
-            q.push(e.v)
-        }
-    }
-    return o
-}
-
